@@ -2,8 +2,14 @@ using Atya.Foundation.Time;
 
 namespace Time.Samples.Console;
 
+/// <summary>
+/// Runs the Atya.Foundation.Time console sample.
+/// </summary>
 public static class Program
 {
+    /// <summary>
+    /// Demonstrates UTC clock and guard usage.
+    /// </summary>
     public static void Main()
     {
         System.Console.WriteLine("Atya.Foundation.Time sample");
@@ -24,8 +30,16 @@ public static class Program
     }
 }
 
+/// <summary>
+/// Represents a sample job scheduled for a UTC timestamp.
+/// </summary>
 public sealed class ScheduledJob
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ScheduledJob"/> class.
+    /// </summary>
+    /// <param name="name">The job name.</param>
+    /// <param name="runAtUtc">The UTC run timestamp.</param>
     public ScheduledJob(string name, DateTime runAtUtc)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
@@ -33,11 +47,17 @@ public sealed class ScheduledJob
         RunAtUtc = TimeGuard.AgainstNonUtc(runAtUtc);
     }
 
+    /// <summary>
+    /// Gets the job name.
+    /// </summary>
     public string Name
     {
         get;
     }
 
+    /// <summary>
+    /// Gets the UTC run timestamp.
+    /// </summary>
     public DateTime RunAtUtc
     {
         get;
